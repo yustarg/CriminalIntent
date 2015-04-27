@@ -31,7 +31,7 @@ public final class R {
         public static final int fragmentContainer=0x7f080000;
     }
     public static final class layout {
-        public static final int activity_crime=0x7f030000;
+        public static final int activity_fragment=0x7f030000;
         public static final int fragment_crime=0x7f030001;
     }
     public static final class menu {
@@ -41,6 +41,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int crime_details_label=0x7f050004;
         public static final int crime_solved_label=0x7f050005;
+        public static final int crime_title=0x7f050006;
         public static final int crime_title_hint=0x7f050002;
         public static final int crime_title_label=0x7f050003;
         public static final int title_activity_crime=0x7f050001;
