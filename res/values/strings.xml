@@ -8,5 +8,7 @@
     <string name="crime_details_label">Details</string>
     <string name="crime_solved_label">Sovled?</string>
 	<string name="crime_title">Crimes</string>
+	<string name="crime_item_title">Crime Title</string>
+	<string name="crime_item_date">Crime Date</string>
 	
 </resources>

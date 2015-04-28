@@ -44,4 +44,9 @@ public class Crime {
 	public void setSovled(boolean sovled) {
 		mSovled = sovled;
 	}
+	
+	@Override
+	public String toString() {
+		return mTitle;
+	}
 }
