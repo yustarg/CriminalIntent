@@ -1,7 +1,9 @@
 package com.bignerdranch.android.criminalintent;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.support.v4.app.ListFragment;
@@ -33,9 +35,19 @@ public class CrimeListFragment extends ListFragment {
 	
 	
 	@Override
+	public void onResume() {
+		super.onResume();
+		((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
+	}
+	
+	
+	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Crime crime = ((CrimeAdapter)getListAdapter()).getItem(position);
-		Log.d(TAG, crime.getTitle() + " was clicked");
+//		Log.d(TAG, crime.getTitle() + "  " + crime.getId() + " was clicked");
+		Intent intent = new Intent(getActivity(), CrimeActivity.class);
+		intent.putExtra(CrimeFragment.EXTRA_CRIME_ID, crime.getId());
+		startActivity(intent);
 	}
 	
 	

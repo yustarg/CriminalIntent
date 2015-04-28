@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import android.R.integer;
 import android.content.Context;
+import android.os.Debug;
+import android.util.Log;
 
 public class CrimeLab {
 	
@@ -37,7 +39,7 @@ public class CrimeLab {
 	
 	public Crime getCrime(UUID id) {
 		for(Crime crime : mCrimes) {
-			if(crime.getId() == id) {
+			if(crime.getId().equals(id)) {
 				return crime;
 			}
 		}
