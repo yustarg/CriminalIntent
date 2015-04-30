@@ -10,20 +10,26 @@ import android.util.Log;
 
 public class CrimeLab {
 	
+	private static final String TAG = "CrimeLab";
+	private static final String FILENAME = "crimes.json";
+	
 	private ArrayList<Crime> mCrimes;
+	private CriminalIntentJSONSerializer mSerializer;
 	
 	private static CrimeLab sCrimeLab;
 	private Context mAppContext;
 	
 	private CrimeLab(Context appContext) {
 		mAppContext = appContext;
-		mCrimes = new ArrayList<Crime>();
-//		for(int i = 0; i < 100; i++) {
-//			Crime crime = new Crime();
-//			crime.setTitle("crime #" + i);
-//			crime.setSovled(i % 2 == 0);
-//			mCrimes.add(crime);
-//		}
+//		mCrimes = new ArrayList<Crime>();
+		mSerializer = new CriminalIntentJSONSerializer(mAppContext, FILENAME);
+		try {
+			mCrimes = mSerializer.loadCrimes();
+		} catch (Exception e) {
+			// TODO: handle exception
+			mCrimes = new ArrayList<Crime>();
+			Log.e(TAG, "error load crimes ", e);
+		}
 	}
 	
 	public static CrimeLab get(Context c) {
@@ -48,5 +54,16 @@ public class CrimeLab {
 	
 	public void addCrime(Crime crime) {
 		mCrimes.add(crime);
+	}
+	
+	public boolean saveCrimes() {
+		try {
+			mSerializer.saveCrimes(mCrimes);
+			Log.d(TAG, "save to file");
+			return true;
+		}catch(Exception e) {
+			Log.d(TAG, "error save to file", e);
+			return false;
+		}
 	}
 }
